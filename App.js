@@ -1,21 +1,56 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
+function HomeScreen({navigation}) {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+     <View style={{ flex: 1, alignItems:
+           'center', justifyContent: 'center' }}>
+        <Text style={{fontSize:30}}>Home Screen</Text>
+        <Text>{'\n'}</Text>
+        <TouchableHighlight
+          onPress={() => navigation.navigate('Details')}
+          activeOpacity={0.6}
+          underlayColor='red'
+        >
+          <Text style={styles.openButton}>Go To Details</Text>
+        </TouchableHighlight>
+
+     </View>
   );
 }
 
+function DetailsScreen() {
+     return (
+	<View style={{ flex: 1, alignItems:
+		'center', justifyContent: 'center' }}>
+		<Text>Details Screen</Text>
+	</View>
+     );
+}
+
+const Stack = createStackNavigator();
+
+function App() {
+    return (
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Home">
+			      <Stack.Screen name="The Essential Shop" component={HomeScreen} />
+			      <Stack.Screen name="User Page" component={DetailsScreen} />
+		      </Stack.Navigator>
+
+	      </NavigationContainer>
+     );
+}
+
+export default App;
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  openButton: {
+    backgroundColor: "#F194FF",
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
   },
 });
