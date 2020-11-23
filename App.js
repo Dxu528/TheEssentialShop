@@ -48,7 +48,7 @@ export default App;
 
 const styles = StyleSheet.create({
   openButton: {
-    backgroundColor: "#F194FF",
+    backgroundColor: "#626262",
     borderRadius: 20,
     padding: 10,
     elevation: 2
