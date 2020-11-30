@@ -13,7 +13,7 @@ function HomeDetailsScreen({navigation}) {
         <TouchableHighlight
            onPress={() => navigation.navigate('Search')}
            activeOpacity={0.6}
-           underlayColor='red'
+           underlayColor='blue'
            >
            <Text style={styles.openButton}>Search</Text>
            </TouchableHighlight>
