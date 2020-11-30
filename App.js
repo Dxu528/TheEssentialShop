@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-function HomeScreen({navigation}) {
+function HomeDetailsScreen({navigation}) {
   return (
      <View style={{ flex: 1, alignItems:'center', justifyContent: 'center' }}>
         <Text style={{fontSize:30}}>The Essential Shop</Text>
@@ -50,25 +50,26 @@ function CartScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Cart Screen</Text>
-      <Button
-        title="Return to Home"
-        color="#841584"
-        onPress={() =>
-            <Tab.Screen name="Home" component={HomeScreen} />
-        }/>
     </View>
   );
 }
 
 const Stack = createStackNavigator();
+
+function HomeScreen() {
+    return (
+        <Stack.Navigator initialRouteName="Home">
+	        <Stack.Screen name="The Essential Shop" component={HomeDetailsScreen} />
+	        <Stack.Screen name="Search" component={SearchScreen} />
+		</Stack.Navigator>
+     );
+}
+
 const Tab = createBottomTabNavigator();
 
-export default function App(component) {
+export default function BottomTabs() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-    	<Stack.Screen name="Search" component={SearchScreen} />
-      </Stack.Navigator>
             <Tab.Navigator
               screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
