@@ -89,7 +89,7 @@ export default function BottomTabs() {
                 },
               })}
               tabBarOptions={{
-                activeTintColor: 'tomato',
+                activeTintColor: 'blue',
                 inactiveTintColor: 'gray',
               }}
                 >
