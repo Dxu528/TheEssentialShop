@@ -83,7 +83,7 @@ export default function BottomTabs() {
                   } else if (route.name === 'LocalProducts') {
                     iconName = focused ? 'ios-help-circle' : 'ios-help-circle-outline';
                   } else if (route.name === 'Cart') {
-                    iconName = focused ? 'ios-help-circle' : 'ios-help-circle-outline';
+                    iconName = focused ? 'ios-cart' : 'ios-cart-outline';
                   }
                   return <Ionicons name={iconName} size={size} color={color} />;
                 },
