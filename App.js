@@ -63,41 +63,40 @@ function CartScreen() {
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function App() {
+export default function App(component) {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-    	<Stack.Screen name="The Essential Shop" component={HomeScreen} />
     	<Stack.Screen name="Search" component={SearchScreen} />
       </Stack.Navigator>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-            if (route.name === 'Home') {
-              iconName = focused
-                ? 'ios-information-circle'
-                : 'ios-information-circle-outline';
-            } else if (route.name === 'User') {
-              iconName = focused ? 'ios-list-box' : 'ios-list';
-            } else if (route.name === 'LocalProducts') {
-              iconName = focused ? 'ios-help-circle' : 'ios-help-circle-outline';
-            } else if (route.name === 'Cart') {
-              iconName = focused ? 'ios-help-circle' : 'ios-help-circle-outline';
-            }
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: 'tomato',
-          inactiveTintColor: 'gray',
-        }}
-      >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="User" component={UserScreen} />
-        <Tab.Screen name="LocalProducts" component={LocalProductsScreen} />
-        <Tab.Screen name="Cart" component={CartScreen} />
-      </Tab.Navigator>
+            <Tab.Navigator
+              screenOptions={({ route }) => ({
+                tabBarIcon: ({ focused, color, size }) => {
+                  let iconName;
+                  if (route.name === 'Home') {
+                    iconName = focused
+                      ? 'ios-information-circle'
+                      : 'ios-information-circle-outline';
+                  } else if (route.name === 'User') {
+                    iconName = focused ? 'ios-list-box' : 'ios-list';
+                  } else if (route.name === 'LocalProducts') {
+                    iconName = focused ? 'ios-help-circle' : 'ios-help-circle-outline';
+                  } else if (route.name === 'Cart') {
+                    iconName = focused ? 'ios-help-circle' : 'ios-help-circle-outline';
+                  }
+                  return <Ionicons name={iconName} size={size} color={color} />;
+                },
+              })}
+              tabBarOptions={{
+                activeTintColor: 'tomato',
+                inactiveTintColor: 'gray',
+              }}
+                >
+              <Tab.Screen name="Home" component={HomeScreen} />
+              <Tab.Screen name="User" component={UserScreen} />
+              <Tab.Screen name="LocalProducts" component={LocalProductsScreen} />
+              <Tab.Screen name="Cart" component={CartScreen} />
+            </Tab.Navigator>
     </NavigationContainer>
   );
 }
