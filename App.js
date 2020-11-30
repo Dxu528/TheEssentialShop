@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight, Image } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, Image, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -7,16 +7,16 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 function HomeScreen({navigation}) {
   return (
-     <View style={{ flex: 1, alignItems:
-           'center', justifyContent: 'center' }}>
+     <View style={{ flex: 1, alignItems:'center', justifyContent: 'center' }}>
         <Text style={{fontSize:30}}>The Essential Shop</Text>
         <Text>{'\n'}</Text>
-        <Button
-           title="Search"
-           color="#841584"
-           onPress={() =>
-           <Tab.Screen name="Search" component={SearchScreen} />
-         }/>
+        <TouchableHighlight
+           onPress={() => navigation.navigate('Search')}
+           activeOpacity={0.6}
+           underlayColor='red'
+           >
+           <Text style={styles.openButton}>Search</Text>
+           </TouchableHighlight>
      </View>
   );
 }
