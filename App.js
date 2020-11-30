@@ -104,7 +104,7 @@ export default function BottomTabs() {
 
 const styles = StyleSheet.create({
   openButton: {
-    backgroundColor: "blue",
+    backgroundColor: "green",
     borderRadius: 20,
     padding: 10,
     elevation: 2
