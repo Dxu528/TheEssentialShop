@@ -84,7 +84,7 @@ export default function App() {
               iconName = focused ? 'ios-help-circle' : 'ios-help-circle-outline';
             } else if (route.name === 'Cart') {
               iconName = focused ? 'ios-help-circle' : 'ios-help-circle-outline';
-            // You can return any component that you like here!
+            }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
