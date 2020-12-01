@@ -1,9 +1,36 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight, Image, Button } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, Image, Button, FlatList } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
+let exampleItems=[
+  {
+    name:'Product',
+    description:'Description',
+    price:'Price',
+  },
+  {
+    name:'Product',
+    description:'Description',
+    price:'Price',
+  },
+  {
+    name:'Product',
+    description:'Description',
+    price:'Price',
+  }
+]
+
+const CharDisplay = char =>{
+      return (
+        <View style={{ alignItems:'left', justifyContent: 'left', backgroundColor: 'grey', marginLeft: 20, marginRight: 20}} >
+          <Text>{char.item.name}            {char.item.price}</Text>
+          <Text>{char.item.description}</Text>
+          <Text>{"\n"}</Text>
+        </View>)
+  }
 
 function HomeDetailsScreen({navigation}) {
   return (
@@ -17,6 +44,12 @@ function HomeDetailsScreen({navigation}) {
            >
            <Text style={styles.openButton}>Search</Text>
            </TouchableHighlight>
+           <Text>{'\n'}</Text>
+           <Text style={{alignItems:'left'}}>Featured Products</Text>
+           <FlatList
+        data={exampleItems}
+        renderItem={CharDisplay}
+      />
      </View>
   );
 }
@@ -26,6 +59,11 @@ function SearchScreen() {
 	<View style={{ flex: 1, alignItems:
 		'center', justifyContent: 'center' }}>
 		<Text>Search Screen</Text>
+    <Text>{'\n'}</Text>
+    <FlatList
+        data={exampleItems}
+        renderItem={CharDisplay}
+      />
 	</View>
      );
 }
