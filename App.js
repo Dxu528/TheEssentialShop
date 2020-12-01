@@ -76,14 +76,14 @@ export default function BottomTabs() {
                   let iconName;
                   if (route.name === 'Home') {
                     iconName = focused
-                      ? 'ios-information-circle'
-                      : 'ios-information-circle-outline';
+                      ? 'ios-home'
+                      : 'ios-home';
                   } else if (route.name === 'User') {
-                    iconName = focused ? 'ios-list-box' : 'ios-list';
-                  } else if (route.name === 'LocalProducts') {
-                    iconName = focused ? 'ios-help-circle' : 'ios-help-circle-outline';
+                    iconName = focused ? 'ios-person' : 'ios-person';
+                  } else if (route.name === 'Local Products') {
+                    iconName = focused ? 'ios-basket' : 'ios-basket';
                   } else if (route.name === 'Cart') {
-                    iconName = focused ? 'ios-cart' : 'ios-cart-outline';
+                    iconName = focused ? 'ios-cart' : 'ios-cart';
                   }
                   return <Ionicons name={iconName} size={size} color={color} />;
                 },
@@ -95,7 +95,7 @@ export default function BottomTabs() {
                 >
               <Tab.Screen name="Home" component={HomeScreen} />
               <Tab.Screen name="User" component={UserScreen} />
-              <Tab.Screen name="LocalProducts" component={LocalProductsScreen} />
+              <Tab.Screen name="Local Products" component={LocalProductsScreen} />
               <Tab.Screen name="Cart" component={CartScreen} />
             </Tab.Navigator>
     </NavigationContainer>
