@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight, Image, Button, FlatList } from 'react-native';
+import React,{useState} from 'react';
+import { StyleSheet, View, Text, TextInput, TouchableHighlight, Image, Button, FlatList } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -7,17 +7,17 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 let exampleItems=[
   {
-    name:'Product',
+    name:'Product A',
     description:'Description',
     price:'Price',
   },
   {
-    name:'Product',
+    name:'Product B',
     description:'Description',
     price:'Price',
   },
   {
-    name:'Product',
+    name:'Product C',
     description:'Description',
     price:'Price',
   }
@@ -55,13 +55,36 @@ function HomeDetailsScreen({navigation}) {
 }
 
 function SearchScreen() {
+    const [searched, setSearched] = useState("Enter search term");
+    const [searchList, setSearchList] = useState(exampleItems.slice())
+    const listGen = () =>{
+      let returnable = [];
+      var i;
+      for(i = 0; i < exampleItems.length; i++){
+        if(exampleItems[i].name==searched || exampleItems[i].description==searched){
+          returnable.push(exampleItems[i]);
+        }
+      }
+      setSearchList(returnable);
+    }
      return (
 	<View style={{ flex: 1, alignItems:
 		'center', justifyContent: 'center' }}>
 		<Text>Search Screen</Text>
     <Text>{'\n'}</Text>
+    <TextInput
+	     style={styles.fieldStyle}
+	     onChangeText={(searched)=>setSearched(searched)}
+	     value={searched}/>
+       <TouchableHighlight
+           onPress={() => listGen()}
+           activeOpacity={0.6}
+           underlayColor='blue'
+           >
+           <Text style={styles.openButton}>Enter</Text>
+           </TouchableHighlight>
     <FlatList
-        data={exampleItems}
+        data={searchList}
         renderItem={CharDisplay}
       />
 	</View>
