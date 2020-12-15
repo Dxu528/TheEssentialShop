@@ -7,20 +7,26 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 let exampleItems=[
   {
-    name:'Eggs',
-    description:'12 count',
-    price:'$2.00',
+    name:'Product A',
+    description:'Description',
+    price: 1.99,
   },
   {
-    name:'Milk',
-    description:'1 gallon - 2%',
-    price:'$3.00',
+    name:'Product B',
+    description:'Description',
+    price: 2.99,
   },
   {
-    name:'AirPods',
-    description:'Wireless earbuds',
-    price:'$150',
+    name:'Product C',
+    description:'Description',
+    price: 3.99,
   }
+]
+
+let cartItems = [
+  {name:'Cart Test',
+    description:'Description',
+    price: 4.99,}
 ]
 
 const CharDisplay = char =>{
@@ -28,6 +34,17 @@ const CharDisplay = char =>{
         <View style={{ alignItems:'left', justifyContent: 'left', backgroundColor: 'grey', marginLeft: 20, marginRight: 20}} >
           <Text>{char.item.name}            {char.item.price}</Text>
           <Text>{char.item.description}</Text>
+          <Text onPress={()=>toCart(char.item)} style={{color: 'white'}}>Send to Cart</Text>
+          <Text>{"\n"}</Text>
+        </View>)
+  }
+
+const CharDisplay2 = char =>{
+      return (
+        <View style={{ alignItems:'left', justifyContent: 'left', backgroundColor: 'grey', marginLeft: 20, marginRight: 20}} >
+          <Text>{char.item.name}            {char.item.price}</Text>
+          <Text>{char.item.description}</Text>
+          <Text onPress={()=>rmFromCart(char.item)} style={{color: 'white'}}>Return</Text>
           <Text>{"\n"}</Text>
         </View>)
   }
@@ -108,11 +125,59 @@ function LocalProductsScreen() {
 }
 
 function CartScreen() {
+  const [cartList, setCartList] = useState(cartItems.slice())
+  const [total, setTotal] = useState(calcTotal(cartItems))
+  function checkout(){
+    cartItems.splice(0)
+    setCartList(cartItems.slice())
+    setTotal(calcTotal(cartItems))
+    }
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Cart Screen</Text>
+      <FlatList
+        data={cartItems}
+        renderItem={CharDisplay2}
+      />
+      <Text>Total: {total}</Text>
+      <TouchableHighlight
+           onPress={() => checkout()}
+           activeOpacity={0.6}
+           underlayColor='blue'
+           >
+           <Text style={styles.openButton}>Checkout</Text>
+           </TouchableHighlight>
     </View>
   );
+}
+
+function toCart(item){
+    cartItems.push(item)
+    var i;
+    for(i = 0; i < exampleItems.length; i++){
+      if(exampleItems[i].name == item.name){
+        exampleItems.splice(i,1)
+      }
+    }
+    //calcTotal(cartItems)
+}
+
+function rmFromCart(item){
+  exampleItems.push(item)
+  var i;
+    for(i = 0; i < cartItems.length; i++){
+      if(cartItems[i].name == item.name){
+        cartItems.splice(i,1)
+      }
+    }
+}
+
+function calcTotal(list){
+  var total=0
+  for(var i = 0; i < list.length; i++){
+    total=total+list[i].price
+  }
+  return total
 }
 
 const Stack = createStackNavigator();
