@@ -1,9 +1,10 @@
 import React,{useState} from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableHighlight, Image, Button, FlatList } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableHighlight, Image, Button, FlatList, ScrollView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {TouchableWithoutFeedback} from "react-native-web";
 
 let exampleItems=[
   {
@@ -126,12 +127,32 @@ function SearchScreen() {
      );
 }
 
-function UserScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>User Screen</Text>
-    </View>
-  );
+function UserScreen({navigation}) {
+        return (
+            <View style={styles2.container}>
+                <View style={styles2.header}>
+                    <View style={styles2.headerContent}>
+                        <Image style={styles2.avatar}
+                               source={{uri: 'https://www.searchpng.com/wp-content/uploads/2019/02/Men-Profile-Image-715x657.png'}}/>
+                        <Text style={styles2.name}>John Doe </Text>
+                        <Text style={styles2.userInfo}>JohnDoe@mail.com </Text>
+                        <Text style={styles2.userInfo}>Ithaca, NY </Text>
+                    </View>
+                </View>
+                <View style={styles2.body}>
+                    {/*<TouchableHighlight onPress={() => navigation.navigate('User')} activeOpacity={0.6} underlayColor='blue'>*/}
+                        <View style={styles2.item}>
+                            <View style={styles2.iconContent}>
+                                <Image style={styles2.icon} source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/Windows_Settings_app_icon.png'}}/>
+                            </View>
+                            <View style={styles2.infoContent}>
+                                <Text style={styles2.info}>Edit Profile</Text>
+                            </View>
+                        </View>
+                    {/*</TouchableHighlight>*/}
+                </View>
+            </View>
+        );
 }
 
 function LocalProductsScreen() {
@@ -282,4 +303,61 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2
   },
+});
+
+const styles2 = StyleSheet.create({
+    header:{
+        backgroundColor: "#DCDCDC",
+    },
+    headerContent:{
+        padding:30,
+        alignItems: 'center',
+    },
+    avatar: {
+        width: 130,
+        height: 130,
+        borderRadius: 63,
+        borderWidth: 4,
+        borderColor: "white",
+        marginBottom:10,
+    },
+    name:{
+        fontSize:22,
+        color:"#000000",
+        fontWeight:'600',
+    },
+    userInfo: {
+        fontSize: 16,
+        color: "#778899",
+        fontWeight: '600',
+    },
+    body:{
+        backgroundColor: "#778899",
+        height:500,
+        alignItems: 'center',
+    },
+    item:{
+        flexDirection : 'row',
+    },
+    infoContent:{
+        flex:1,
+        alignItems:'flex-start',
+        paddingLeft:5
+    },
+    iconContent:{
+        flex:1,
+        alignItems:'flex-end',
+        paddingRight:5,
+    },
+    icon:{
+        width:30,
+        height:30,
+        marginTop:20,
+    },
+    info:{
+        fontSize:18,
+        marginTop:20,
+        width: 90,
+        color: "#FFFFFF",
+    }
 });
