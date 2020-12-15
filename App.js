@@ -29,6 +29,24 @@ let cartItems = [
     price: 4.99,}
 ]
 
+let localProductItems=[
+    {
+      name:'Raw Honey',
+      description:'12oz Bottle',
+      price: 6.99,
+    },
+    {
+      name:'Strawberries',
+      description:'2lb container',
+      price: 7.99,
+    },
+    {
+      name:'Apples',
+      description:'single count',
+      price: 0.99,
+    }
+]
+
 const CharDisplay = char =>{
       return (
         <View style={{ alignItems:'left', justifyContent: 'left', backgroundColor: 'grey', marginLeft: 20, marginRight: 20}} >
@@ -117,11 +135,40 @@ function UserScreen() {
 }
 
 function LocalProductsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Local Products Screen</Text>
-    </View>
-  );
+  const [searchedLocalProducts, setSearchedLocalProducts] = useState("Enter search term");
+  const [searchLocalList, setSearchLocalList] = useState(localProductItems.slice())
+  const listGen = () =>{
+     let returnable = [];
+     var i;
+     for(i = 0; i < localProductItems.length; i++){
+       if(localProductItems[i].name==searchedLocalProducts || localProductItems[i].description==searchedLocalProducts){
+           returnable.push(localProductItems[i]);
+        }
+     }
+       setSearchLocalList(returnable);
+     }
+    return (
+  	<View style={{ flex: 1, alignItems:
+  		'center', justifyContent: 'center' }}>
+  		<Text>Search Local Products</Text>
+      <Text>{'\n'}</Text>
+      <TextInput
+  	     style={styles.fieldStyle}
+  	     onChangeText={(searchedLocalProducts)=>setSearchedLocalProducts(searchedLocalProducts)}
+  	     value={searchedLocalProducts}/>
+         <TouchableHighlight
+             onPress={() => listGen()}
+             activeOpacity={0.6}
+             underlayColor='blue'
+             >
+             <Text style={styles.openButton}>Enter</Text>
+             </TouchableHighlight>
+      <FlatList
+          data={searchLocalList}
+          renderItem={CharDisplay}
+        />
+  	</View>
+       );
 }
 
 function CartScreen() {
