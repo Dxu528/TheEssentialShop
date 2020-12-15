@@ -7,19 +7,19 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 let exampleItems=[
   {
-    name:'Product A',
-    description:'Description',
-    price:'Price',
+    name:'Eggs',
+    description:'12 count',
+    price:'$2.00',
   },
   {
-    name:'Product B',
-    description:'Description',
-    price:'Price',
+    name:'Milk',
+    description:'1 gallon - 2%',
+    price:'$3.00',
   },
   {
-    name:'Product C',
-    description:'Description',
-    price:'Price',
+    name:'AirPods',
+    description:'Wireless earbuds',
+    price:'$150',
   }
 ]
 
