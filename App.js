@@ -6,6 +6,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {TouchableWithoutFeedback} from "react-native-web";
 
+let profileCount = 0;
+let person;
 let exampleItems=[
   {
     name:'Eggs',
@@ -127,33 +129,37 @@ function SearchScreen() {
      );
 }
 
+
 function UserScreen({navigation}) {
-        return (
-            <View style={styles2.container}>
-                <View style={styles2.header}>
-                    <View style={styles2.headerContent}>
-                        <Image style={styles2.avatar}
-                               source={{uri: 'https://www.searchpng.com/wp-content/uploads/2019/02/Men-Profile-Image-715x657.png'}}/>
-                        <Text style={styles2.name}>John Doe </Text>
-                        <Text style={styles2.userInfo}>JohnDoe@mail.com </Text>
-                        <Text style={styles2.userInfo}>Ithaca, NY </Text>
-                    </View>
-                </View>
-                <View style={styles2.body}>
-                    {/*<TouchableHighlight onPress={() => navigation.navigate('User')} activeOpacity={0.6} underlayColor='blue'>*/}
-                        <View style={styles2.item}>
-                            <View style={styles2.iconContent}>
-                                <Image style={styles2.icon} source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/Windows_Settings_app_icon.png'}}/>
-                            </View>
-                            <View style={styles2.infoContent}>
-                                <Text style={styles2.info}>Edit Profile</Text>
-                            </View>
-                        </View>
-                    {/*</TouchableHighlight>*/}
+
+    return (
+        <View style={styles2.container}>
+            <View style={styles2.header}>
+                <View style={styles2.headerContent}>
+                    <Image style={styles2.avatar}
+                           source={{uri: 'https://www.searchpng.com/wp-content/uploads/2019/02/Men-Profile-Image-715x657.png'}}/>
+                    <TextInput style={styles2.name} placeholder={"John Doe"}></TextInput>
+                    <TextInput style={styles2.userInfo} placeholder={"JohnDoe@mail.com"}></TextInput>
+                    <TextInput style={styles2.userInfo} placeholder={"Ithaca, NY"}></TextInput>
                 </View>
             </View>
-        );
+            <View style={styles2.body}>
+                {/*<TouchableHighlight onPress={() => profileSettings()} activeOpacity={0.6} underlayColor='blue'>*/}
+                    <View style={styles2.item}>
+                        <View style={styles2.iconContent}>
+                            {/*<Image style={styles2.icon} source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/Windows_Settings_app_icon.png'}}/>*/}
+                        </View>
+                        <View style={styles2.infoContent}>
+                            {/*<Text style={styles2.info}>Edit Profile</Text>*/}
+                            <Text style={styles2.info}>Change profile information by clicking and editing the above text!</Text>
+                        </View>
+                    </View>
+                 {/*</TouchableHighlight>*/}
+            </View>
+        </View>
+    );
 }
+
 
 function LocalProductsScreen() {
   const [searchedLocalProducts, setSearchedLocalProducts] = useState("Enter search term");
@@ -323,11 +329,13 @@ const styles2 = StyleSheet.create({
     },
     name:{
         fontSize:22,
+        textAlign: 'center',
         color:"#000000",
         fontWeight:'600',
     },
     userInfo: {
         fontSize: 16,
+        textAlign: 'center',
         color: "#778899",
         fontWeight: '600',
     },
@@ -357,7 +365,9 @@ const styles2 = StyleSheet.create({
     info:{
         fontSize:18,
         marginTop:20,
-        width: 90,
+        marginLeft:-150,
+        textAlign: 'center',
+        width: 320,
         color: "#FFFFFF",
     }
 });
