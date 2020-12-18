@@ -23,7 +23,8 @@ let exampleItems=[
     name:'AirPods',
     description:'Wireless Earbuds',
     price: 149.99,
-  }
+  },
+  {
     name:'Toothbrush',
     description:'Pack of 4',
     price: 3.99,
@@ -106,7 +107,7 @@ let localProductItems=[
       name:'Tomatoes',
       description:'2lb',
       price: 7.99,
-    },
+    }
 ]
 
 const CharDisplay = char =>{
