@@ -24,6 +24,40 @@ let exampleItems=[
     description:'Wireless Earbuds',
     price: 149.99,
   }
+    name:'Toothbrush',
+    description:'Pack of 4',
+    price: 3.99,
+  },
+  {
+    name:'Toothpaste',
+    description:'1 Tube',
+    price: 3.99,
+  },
+  {
+    name:'Blender',
+    description:'Black+Decker',
+    price: 399.99,
+  },
+  {
+    name:'Monopoly',
+    description:'Original',
+    price: 29.99,
+  },
+  {
+    name:'PlayStation 5',
+    description:'Blu-ray version',
+    price: 599.99,
+  },
+  {
+    name:'IPhone 12 Pro Max',
+    description:'64 GB',
+    price: 1399.00,
+  },
+  {
+    name:'Pillow',
+    description:'2 Set',
+    price: 49.99,
+  }
 ]
 
 let cartItems = [
@@ -44,10 +78,35 @@ let localProductItems=[
       price: 7.99,
     },
     {
-      name:'Apples',
+      name:'Apple',
       description:'single count',
       price: 0.99,
-    }
+    },
+    {
+      name:'Joy Bliss Raw',
+      description:'Chocolate',
+      price: 7.99,
+    },
+    {
+      name:'Aburi Botanical Soap',
+      description:'1 bar',
+      price: 10.00,
+    },
+    {
+      name:'Relax Rest Juice',
+      description:'Tasty 6',
+      price: 2.99,
+    },
+    {
+      name:'Butter Sea Salt',
+      description:'8oz',
+      price: 8.99,
+    },
+    {
+      name:'Tomatoes',
+      description:'2lb',
+      price: 7.99,
+    },
 ]
 
 const CharDisplay = char =>{
